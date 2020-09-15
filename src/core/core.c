@@ -123,8 +123,3 @@ void core_log(char reveal, FILE *fout) {
         putchar(10);
     }
 }
-
-void core_get_stats(char *m, char *s) {
-    *m = mines;
-    *s = state;
-}
