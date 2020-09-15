@@ -13,14 +13,14 @@ static void render(char reveal) {
                 if (*bp & MINE) {
                     mvaddch(i + 1, j << 1, '*');
                 } else {
-                    mvprintw(i + 1, j << 1, "%hhu", *bp & CNT);
+                    mvprintw(i + 1, j << 1, "%d", *bp & CNT);
                 }
             } else {
                 if (*bp & CHECK) {
                     if (*bp & MINE) {
                         mvaddch(i + 1, j << 1, '*');
                     } else {
-                        mvprintw(i + 1, j << 1, "%hhu", *bp & CNT);
+                        mvprintw(i + 1, j << 1, "%d", *bp & CNT);
                     }
                 } else if (*bp & MARK) {
                     mvaddch(i + 1, j << 1, 'F');
