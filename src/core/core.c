@@ -26,8 +26,8 @@ void core_initialize(void) {
     for (char i = 0; i < 8; ++i) {
         for (char j = 0; j < 8; ++j, ++bp) {
             if (!(*bp & MINE)) {
-                for (char k = -1; k < 2; ++k) {
-                    for (char l = -1; l < 2; ++l) {
+                for (signed char k = -1; k < 2; ++k) {
+                    for (signed char l = -1; l < 2; ++l) {
                         if (i + k >= 0 && i + k < 8 &&
                             j + l >= 0 && j + l < 8) {
                             if (bp[(k << 3) + l] & MINE) {
@@ -76,8 +76,8 @@ void core_check(unsigned char r, unsigned char c) {
         cur = board + idx;
         cell = board[idx];
         if (!(cell & CNT)) {
-            for (char i = -1; i < 2; ++i) {
-                for (char j = -1; j < 2; ++j) {
+            for (signed char i = -1; i < 2; ++i) {
+                for (signed char j = -1; j < 2; ++j) {
                     if (r + i >= 0 && r + i < 8 &&
                         c + j >= 0 && c + j < 8 &&
                         !(cur[(i << 3) + j] & CHECK)) {

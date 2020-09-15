@@ -1,7 +1,10 @@
 #include <ncurses.h>
 #include "controller/controller.h"
-
+#include "core/core.h"
 int main(void) {
+    core_initialize();
+    core_log(1, stdout);
+    /*
     char mines, state, out;
     int ch;
     initscr();
@@ -39,5 +42,6 @@ int main(void) {
         }
     }
     endwin();
+    */
     return 0;
 }

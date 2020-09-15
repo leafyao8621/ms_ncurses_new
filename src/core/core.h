@@ -18,6 +18,5 @@ extern char state, mines;
 void core_initialize(void);
 void core_check(unsigned char r, unsigned char c);
 void core_mark(unsigned char r, unsigned char c);
-void core_log(char reveal, FILE *fout);
 
 #endif
