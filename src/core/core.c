@@ -16,7 +16,7 @@ void core_initialize(void) {
     rem = 54;
     mines = 0;
     state = ONGOING;
-    srand(10);
+    srand(time(0));
     char idx = 0;
     for (; mines < 10; ++mines) {
         for (idx = rand() & 0x3f; board[idx]; idx = rand() & 0x3f);
@@ -42,8 +42,11 @@ void core_initialize(void) {
 }
 
 void core_mark(unsigned char r, unsigned char c) {
-    mines += !(board[(r << 3) + c] & MARK) ? -1 : 1;
-    board[(r << 3) + c] ^= MARK;
+    unsigned char idx = (r << 3) + c;
+    if (!(board[idx] & CHECK)) {
+        mines += !(board[idx] & MARK) ? -1 : 1;
+        board[idx] ^= MARK;
+    }
 }
 
 void core_check(unsigned char r, unsigned char c) {
@@ -53,11 +56,11 @@ void core_check(unsigned char r, unsigned char c) {
     unsigned char idx = (r << 3) + c;
     unsigned char cell = board[idx];
     unsigned char *cur = board + idx;
-    if (cell & MINE) {
-        state = LOSS;
+    if ((cell & MARK) || (cell & CHECK)) {
         return;
     }
-    if ((cell & MARK) || (cell & CHECK)) {
+    if (cell & MINE) {
+        state = LOSS;
         return;
     }
     sp = stack;

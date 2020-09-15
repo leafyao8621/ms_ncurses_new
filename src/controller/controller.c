@@ -23,7 +23,7 @@ static void render(char reveal) {
                         mvprintw(i + 1, j << 1, "%hhu", *bp & CNT);
                     }
                 } else if (*bp & MARK) {
-                    mvaddch(i + 1, j << 1, '*');
+                    mvaddch(i + 1, j << 1, 'F');
                 } else {
                     mvaddch(i + 1, j << 1, '_');
                 }
