@@ -3,7 +3,7 @@
 #include "../core/core.h"
 
 static unsigned char r, c;
-static char *bp;
+static unsigned char *bp;
 
 static void render(char reveal) {
     bp = board;

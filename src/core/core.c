@@ -104,14 +104,14 @@ void core_log(char reveal, FILE *fout) {
                 if (*bp & MINE) {
                     fputs("* ", fout);
                 } else {
-                    fprintf(fout, "%hhu ", *bp & CNT);
+                    fprintf(fout, "%d ", *bp & CNT);
                 }
             } else {
                 if (*bp & CHECK) {
                     if (*bp & MINE) {
                         fputs("* ", fout);
                     } else {
-                        fprintf(fout, "%hhu ", *bp & CNT);
+                        fprintf(fout, "%d ", *bp & CNT);
                     }
                 } else if (*bp & MARK) {
                     fputs("F ", fout);
